@@ -12,7 +12,7 @@ __cmd__
 """
 
 
-train_cmd = "python $PY --train_data $DATA_PATH --eval_data $EVAL_DATA --save_path $SAVE_PATH"
+train_cmd = "python $PY --train_data $DATA_PATH --eval_data $EVAL_DATA --save_path $SAVE_PATH "
 
 def main():
     #--embedding_size 20 --learning_rate 1.0 --batch_size 48 --window_size 10
@@ -23,7 +23,7 @@ def main():
     def batch_size(val):
         return "b{}".format(val), "--batch_size {}".format(val)
     def window_size(val):
-        return "b{}".format(val), "--window_size {}".format(val)
+        return "w{}".format(val), "--window_size {}".format(val)
 
     funcs = [learning_rate, embedding_size, batch_size,  window_size]
     template = [1.0, 20, 48, 10]
@@ -32,15 +32,15 @@ def main():
     # batch_size: 4– 512
     # window_size: 1 - 20
     params = []
-    _embedding_size = range(10,410,10)
+    _embedding_size = [100,200,300,400]
     _learning_rate = [0.0001,0.001,0.01,0.1,1,10]
     _batch_size = [4,8,16,32,64,128,256,512]
-    _window_size = range(1,21,1)
-    for e in _embedding_size:
-        for l in _learning_rate:
+    _window_size = [4,8,10,15,20]
+    for l in _learning_rate:
+        for e in _embedding_size:
             for b in _batch_size:
                 for w in _window_size:
-                    params.append([e,l,b,w])
+                    params.append([l,e,b,w])
 
     def get_name_cmd(paras):
         name = ""
