@@ -509,6 +509,8 @@ def main(_):
     print("--train_data --eval_data and --save_path must be specified.")
     sys.exit(1)
   opts = Options()
+  print("embedding_size:{} learning_rate:{} batch_size:{} window_size:{} ".format(
+      opts.emb_dim,opts.learning_rate,opts.batch_size,opts.window_size))
   with tf.Graph().as_default(), tf.Session() as session:
     with tf.device("/cpu:0"):
       model = Word2Vec(opts, session)
