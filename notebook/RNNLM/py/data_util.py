@@ -120,7 +120,7 @@ def create_vocabulary(vocabulary_path, data_paths, max_vocabulary_size,
         print("Creating vocabulary %s from data %s" % (vocabulary_path, ",".join(data_paths)))
         vocab = {}
         for data_path in data_paths:
-            with gfile.GFile(data_path, mode="rb") as f:
+            with gfile.GFile(data_path, mode="r") as f:
                 print(data_path)
                 counter = 0
                 for line in f:
