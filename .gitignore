@@ -9,3 +9,4 @@
 *pyc
 notebook/RNNLM/.ipynb_checkpoints
 notebook/RNNLM/model/model_small
+LM/RNNLM/model/model_small
